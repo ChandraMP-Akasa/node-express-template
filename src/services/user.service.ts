@@ -1,6 +1,6 @@
 // src/services/user.service.ts
 
-import appConfigService from "../config/app-config.service";
+import appConfigService from "../config/app-config";
 
 // NOTE: Write pure functions in services
 export interface UserDTO {
