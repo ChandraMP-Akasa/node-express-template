@@ -26,20 +26,20 @@ class AppConfigService {
         this.config = {
             db: {
                 host: this.getEnv('DB_HOST', 'localhost'),
-                port: this.getEnvNumber('DB_PORT', 5432),
+                port: this.getEnvNumber('DB_PORT', 3306),
                 username: this.getEnv('DB_USERNAME', 'root'),
                 password: this.getEnv('DB_PASSWORD', ''),
                 database: this.getEnv('DB_NAME', 'app_db'),
             },
             secrets: {
-                apiKey: this.getEnv('API_KEY', ''),
-                jwtSecret: this.getEnv('JWT_SECRET', 'your-secret-key'),
+                apiKey: this.getEnv('API_KEY', null),
+                jwtSecret: this.getEnv('JWT_SECRET', null),
             },
             nodeEnv: this.getEnv('NODE_ENV', 'development'),
         };
     }
 
-    private getEnv(key: string, defaultValue: string): string {
+    private getEnv(key: string, defaultValue: any): string {
         return process.env[key] || defaultValue;
     }
 
