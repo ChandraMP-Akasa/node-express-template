@@ -1,4 +1,7 @@
 // src/services/user.service.ts
+
+import appConfigService from "../config/app-config.service";
+
 // NOTE: Write pure functions in services
 export interface UserDTO {
   id: number;
@@ -10,6 +13,12 @@ export interface CreateUserRequest {
 }
 
 export async function getAllUsers(): Promise<UserDTO[]> {
+  const  config = appConfigService.getConfig();
+  const secrets = appConfigService.getSecrets();
+
+  console.log('dbConfig -', config.db);
+  console.log('secrets -', config.secrets);
+  console.log('env -', config.nodeEnv)
   return [
     { id: 1, name: "Chandra" },
     { id: 2, name: "John Doe" },
